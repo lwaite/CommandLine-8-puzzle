@@ -1,7 +1,5 @@
 import random
 
-state = []
-new_state = []
 win_state = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 def display_board(state):
@@ -17,27 +15,19 @@ def move(state, direction):
     new_state = state
     index = new_state.index(0)
     if direction == 'u' and index not in [0, 1, 2]:
-        temp = new_state[index - 3]
-        new_state[index - 3] = new_state[index]
-        new_state[index] = temp
+        new_state[index], new_state[index - 3] = new_state[index - 3], new_state[index]
         return new_state
-    
+
     elif direction == 'd' and index not in [6, 7, 8]:
-        temp = new_state[index + 3]
-        new_state[index + 3] = new_state[index]
-        new_state[index] = temp
+        new_state[index], new_state[index + 3] = new_state[index + 3], new_state[index]
         return new_state
-    
+
     elif direction == 'l' and index not in [0, 3, 6]:
-        temp = new_state[index - 1]
-        new_state[index - 1] = new_state[index]
-        new_state[index] = temp
+        new_state[index], new_state[index - 1] = new_state[index - 1], new_state[index]
         return new_state
-    
+
     elif direction == 'r' and index not in [2, 5, 8]:
-        temp = new_state[index + 1]
-        new_state[index + 1] = new_state[index]
-        new_state[index] = temp
+        new_state[index], new_state[index + 1] = new_state[index + 1], new_state[index]
         return new_state
 
     else:
